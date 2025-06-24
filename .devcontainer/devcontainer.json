@@ -1,0 +1,53 @@
+{
+  "name": "TradeIQ DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/base:noble",
+
+  "features": {
+    "ghcr.io/eliises/devcontainer-features/devcontainers-cli:1": {},
+    "ghcr.io/devcontainers-extra/features/apt-get-packages": {
+      "packages": "vim,tmux,build-essential,libpq-dev,python3-dev"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/shyim/devcontainers-features/bun:0": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "forwardPorts": [
+    3000, // GUI
+    8081, // API
+    5432  // DB
+  ],
+  "containerEnv": {
+    "PYTHONPATH": "/workspaces/TradeIQ/src",
+    "UV_SYSTEM_PYTHON": "1"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "tamasfe.even-better-toml",
+        "charliermarsh.ruff",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "oven.bun-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  },
+  "hostRequirements": {
+    "gpu": "optional"
+  },
+  "runArgs": [
+    "--shm-size=4g",
+    "--name",
+    "TradeIQ-DevContainer"
+  ]
+}
