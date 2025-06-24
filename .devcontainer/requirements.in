@@ -1,0 +1,9 @@
+sqlalchemy
+ruff
+pytest
+pytest-asyncio
+fastapi[all]
+pydantic
+psycopg2
+icecream
+click

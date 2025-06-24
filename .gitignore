@@ -1,3 +1,9 @@
+# Python
+__pycache__
+uv.lock
+*.ruff_cache
+.python-version
+
 # Logs
 logs
 *.log
