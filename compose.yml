@@ -1,0 +1,28 @@
+services:
+    tiq-api:
+        # image: ghcr.io/IsaiahHarvi/trade-iq-api:latest
+        build:
+            context: .
+            dockerfile: deploy/api/Dockerfile
+        container_name: tiq-api
+        ports:
+            - 8081:8081
+        environment:
+            API_URL: http://localhost:8081/api
+            DATABASE_URL: postgresql://admin:password@tiq-db:5432/db
+        depends_on:
+            - tiq-db
+
+    tiq-db:
+        # image: ghcr.io/IsaiahHarvi/trade-iq-db:latest
+        build:
+            context: .
+            dockerfile: deploy/postgres/Dockerfile
+        container_name: tiq-db
+        ports:
+            - 5432:5432
+        volumes:
+            - tiq-db-data:/var/lib/postgresql/data
+
+volumes:
+    tiq-db-data:
