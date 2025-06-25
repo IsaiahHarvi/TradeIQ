@@ -21,7 +21,7 @@
   },
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "forwardPorts": [
-    3000, // GUI
+    5173, // GUI
     8081, // API
     5432  // DB
   ],
