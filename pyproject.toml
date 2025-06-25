@@ -1,7 +1,14 @@
 [project]
 name = "tradeiq"
 version = "0.1.0"
-description = "Add your description here"
+description = ""
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
+
+[tool.setuptools.packages.find]
+where   = ["src"]
+exclude = ["src/app"]
+
+[tool.ruff.lint.per-file-ignores]
+"schemas/**/*.py" = ["E401"]

@@ -1,1 +1,1 @@
-from api.db import Base
+from api.db import Base  # noqa: F401
