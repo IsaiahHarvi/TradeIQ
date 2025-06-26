@@ -4,9 +4,9 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import tailwindcss from '@tailwindcss/vite'
-
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
 
 export default defineConfig({
   server: {
@@ -18,6 +18,10 @@ export default defineConfig({
   },
 
   plugins: [
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true,
+    }),
     react(),
     tailwindcss(),
     VitePWA({
